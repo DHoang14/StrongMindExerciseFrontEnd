@@ -32,7 +32,14 @@ npm i
 if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
 ```
 
- This will allow the application to recognize the local host the frontend is hosted on and stop giving CORS errors. You can now run the backend server locally by running the following command in the terminal: 
+ This will allow the application to recognize the local host the frontend is hosted on and stop giving CORS errors. 
+ Now there is one last thing you need to do before you can run the backend server. It connects to the database through a database URI, which would normally be hidden, but since this is an exercise, create a .env file and copy and paste the following into it.
+
+```
+ DATABASE_URI=mongodb+srv://guest:Gv9NtRd7whCNzodf@testing.zt52h.mongodb.net/seExercise?retryWrites=true&w=majority&appName=Testing
+```
+
+ You can now run the backend server locally by running the following command in the terminal: 
  
  ```
  npm start
