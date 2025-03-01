@@ -1,7 +1,7 @@
-import React, { useEffect, useState} from 'react'
-import { getAllToppings, addTopping, deleteTopping } from '../api'
+import React, { useState} from 'react'
+import { getAllToppings, deleteTopping } from '../api'
 import { useLoaderData, Await, Link } from 'react-router'
-import '../assets/topping.css'
+import '../assets/card.css'
 
 export async function loader() {
     const toppings = getAllToppings()
@@ -28,7 +28,7 @@ function Toppings() {
                             state={{
                                 id: topping._id,
                             }}
-                            className='topping-edit'> 
+                            className='card-edit'> 
                             Edit
                         </Link>
                         <button onClick={async () => await remove(topping._id)}>
@@ -39,16 +39,15 @@ function Toppings() {
             : null
         return (
             <div>
-                <h2>Toppings</h2>
+                <h1 className='card-header'>Toppings</h1>
                 {deleted && <p>Refresh to see the new list!</p>}
                 {toppingElements}
                 <div className='card-container'>
-                    <Link className='topping-add' to="/toppings/add">Add a new topping?</Link>
+                    <Link className='card-add' to="/toppings/add">Add a new topping?</Link>
                 </div>
             </div>
             )
     }
-
 
     return (
         <div>

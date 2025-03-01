@@ -1,10 +1,11 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {
     Form,
     useNavigation,
     useActionData,
 } from 'react-router'
 import { addTopping } from '../api'
+import '../assets/form.css'
 
 export async function action({request}) {
     const formData = await request.formData()
@@ -39,7 +40,7 @@ function ToppingAdd() {
 
     return (
         <div className='form-container'>
-            <h1>Add a new topping</h1>
+            <h1 className='form-title'>Add a new topping</h1>
             {actionData && resultMsg}
             <Form
                 method='post'
@@ -57,9 +58,7 @@ function ToppingAdd() {
                 >
                     {navigation.state === 'submitting'? 'Adding...' : 'Add'}
                 </button>
-
             </Form>
-
         </div>
     )
 }

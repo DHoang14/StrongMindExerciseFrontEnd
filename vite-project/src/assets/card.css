@@ -1,0 +1,55 @@
+.card-header {
+    margin: 0;
+    padding: 20px;
+}
+
+.card-add {
+    color: #213547;
+}
+
+.card-edit {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.8em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #808080;
+    color: #f9f9f9;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    justify-content: center;
+}
+.card-edit:hover {
+    border-color: yellowgreen;
+    color: inherit
+}
+.card-edit:focus,
+.card-edit:focus-visible {
+outline: 4px auto -webkit-focus-ring-color;
+}
+
+.card-container {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#808080;
+}
+
+.card-operations {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (prefers-color-scheme: light) {
+    .card-edit {
+      background-color: #f9f9f9;
+      color: #213547;
+    }
+
+    .card-container {
+        background-color: #cacaca;
+    }
+}

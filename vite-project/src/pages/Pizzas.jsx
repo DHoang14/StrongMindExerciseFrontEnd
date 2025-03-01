@@ -1,7 +1,11 @@
 import React, { useState} from 'react'
 import { getAllPizzas, deletePizza } from '../api'
-import { useLoaderData, Await, Link } from 'react-router'
-import '../assets/topping.css'
+import { 
+    useLoaderData, 
+    Await, 
+    Link 
+} from 'react-router'
+import '../assets/card.css'
 
 export async function loader() {
     const pizzas = getAllPizzas()
@@ -23,8 +27,10 @@ function Pizzas() {
                 const toppingList = pizza.toppings.map(topping => topping.name)
 
                 return <div className='card-container' key={pizza._id}>
-                    <h3>{pizza.name}</h3>
-                    <h2>Toppings: {toppingList.length > 0? toppingList.join(', ') : 'None'}</h2>
+                    <div className='card-pizza'>
+                        <h2>{pizza.name}</h2>
+                        <h3>Toppings: {toppingList.length > 0? toppingList.join(', ') : 'None'}</h3>
+                    </div>
                     <div className='card-operations'>
                         <Link
                             to='/pizzas/edit'
@@ -32,7 +38,7 @@ function Pizzas() {
                                 id: pizza._id,
                                 toppings: toppingList,
                             }}
-                            className='topping-edit'> 
+                            className='card-edit'> 
                             Edit
                         </Link>
                         <button onClick={async () => await remove(pizza._id)}>
@@ -43,12 +49,12 @@ function Pizzas() {
             : null
         return (
             <div>
-                <h2>Pizzas</h2>
+                <h1 className='card-header'>Pizzas</h1>
                 {deleted && <p>Refresh to see the new list!</p>}
                 {pizzaElements}
                 <div className='card-container'>
                     <Link 
-                        className='topping-add' 
+                        className='card-add' 
                         to="/pizzas/add"
                     >
                         Add a new pizza?

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {
     Form,
     useNavigation,
@@ -7,6 +7,7 @@ import {
     useLocation
 } from 'react-router'
 import { updateTopping } from '../api'
+import '../assets/form.css'
 
 export async function action({request}) {
     const formData = await request.formData()
@@ -40,7 +41,7 @@ function ToppingEdit() {
 
     return (
         <div className='form-container'>
-            <h1>Change topping name</h1>
+            <h1 className='form-title'>Change topping name</h1>
             {actionData && resultMsg}
             <Form
                 method='post'
@@ -63,9 +64,7 @@ function ToppingEdit() {
                 >
                     {navigation.state === 'submitting'? 'Updating...' : 'Update'}
                 </button>
-
             </Form>
-
         </div>
     )
 }

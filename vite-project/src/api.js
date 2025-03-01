@@ -18,8 +18,6 @@ export async function getAllToppings() {
     if (res.status === 204) {
         return null
     }
-    console.log(res)
-
     const data = await res.json()
     return data
 }
@@ -38,14 +36,12 @@ export async function addTopping(name) {
     } catch (err) {
         //typically if it failed to connect to the backend or its database
         throw {
-            message: err.message,
             status: err.status
         }
     }
 
     if (!res.ok) {
         throw {
-            message: res.message,
             status: res.status
         }
     }
@@ -73,7 +69,6 @@ export async function deleteTopping(id) {
 
     if (!res.ok) {
         throw {
-            message: res.message,
             status: res.status
         }
     }
@@ -101,7 +96,6 @@ export async function updateTopping(id, name) {
 
     if (!res.ok) {
         throw {
-            message: res.message,
             status: res.status
         }
     }
@@ -129,7 +123,6 @@ export async function getAllPizzas() {
     if (res.status === 204) {
         return null
     }
-
     const data = await res.json()
     return data
 }
@@ -149,13 +142,11 @@ export async function addPizza(name, toppings) {
         //typically if it failed to connect to the backend or its database
         throw {
             status: err,
-            message: err.message
         }
     }
 
     if (!res.ok) {
         throw {
-            message: res.message,
             status: res.status
         }
     }
@@ -183,7 +174,6 @@ export async function deletePizza(id) {
 
     if (!res.ok) {
         throw {
-            message: res.message,
             status: res.status
         }
     }
@@ -222,7 +212,6 @@ export async function updatePizza(id, name, toppings) {
 
     if (!res.ok) {
         throw {
-            message: res.message,
             status: res.status
         }
     }

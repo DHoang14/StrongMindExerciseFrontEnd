@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {
     Form,
     useNavigation,
@@ -9,6 +9,7 @@ import {
     Await
 } from 'react-router'
 import { updatePizza } from '../api'
+import '../assets/form.css'
 
 export async function action({request}) {
     const formData = await request.formData()
@@ -46,7 +47,7 @@ function PizzaEdit() {
     function renderForm(toppings) {
         const toppingOptions = toppings.map(topping => {
             return (
-                <label className="checkbox" key={topping._id}>
+                <label key={topping._id}>
                     <input
                         type="checkbox"
                         name={topping._id}
@@ -58,7 +59,7 @@ function PizzaEdit() {
 
         return (
             <div className='form-container'>
-                <h1>Change pizza name</h1>
+                <h1 className='form-title'>Change pizza name</h1>
                 {actionData && resultMsg}
                 <Form
                     method='post'
@@ -75,15 +76,15 @@ function PizzaEdit() {
                         type='text'
                         placeholder='Name'
                     />
-                    {toppingOptions}
+                    <div className='form-checkboxes'>
+                        {toppingOptions}
+                    </div>
                     <button
                         disabled={navigation.state === 'submitting'}
                     >
                         {navigation.state === 'submitting'? 'Updating...' : 'Update'}
                     </button>
-    
                 </Form>
-    
             </div>
         )
     }
