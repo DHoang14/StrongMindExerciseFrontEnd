@@ -17,7 +17,7 @@ export async function action({request}) {
         const result = await updateTopping(id, newName)
         return redirect('/toppings')
     } catch (err) {
-        return new Response(JSON.stringify({error: err.status}), {
+        return new Response(JSON.stringify({error: err.message}), {
             headers: { 'Content-Type': 'application/json'}
         })
     }
@@ -30,13 +30,7 @@ function ToppingEdit() {
 
     let resultMsg
     if (actionData?.error) {
-        if (actionData.error === 400) {
-            resultMsg = 'Topping id and name are required.'
-        } else if (actionData.error === 409) {
-            resultMsg = 'Topping with that name already exists.'
-        } else if (actionData.error === 500) {
-            resultMsg = 'Cannot connect to server. Please try again in a few minutes.'
-        }
+        resultMsg = actionData.error
     }
 
     return (

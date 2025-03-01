@@ -41,8 +41,10 @@ export async function addTopping(name) {
     }
 
     if (!res.ok) {
+        const errMsg = JSON.parse(await res.text())
         throw {
-            status: res.status
+            status: res.status,
+            message: errMsg.message
         }
     }
     const data = await res.json()
@@ -68,8 +70,10 @@ export async function deleteTopping(id) {
     }
 
     if (!res.ok) {
+        const errMsg = JSON.parse(await res.text())
         throw {
-            status: res.status
+            status: res.status,
+            message: errMsg.message
         }
     }
     const data = await res.json()
@@ -95,8 +99,10 @@ export async function updateTopping(id, name) {
     }
 
     if (!res.ok) {
+        const errMsg = JSON.parse(await res.text())
         throw {
-            status: res.status
+            status: res.status,
+            message: errMsg.message
         }
     }
     const data = await res.json()
@@ -146,8 +152,10 @@ export async function addPizza(name, toppings) {
     }
 
     if (!res.ok) {
+        const errMsg = JSON.parse(await res.text())
         throw {
-            status: res.status
+            status: res.status,
+            message: errMsg.message
         }
     }
     const data = await res.json()
@@ -173,8 +181,10 @@ export async function deletePizza(id) {
     }
 
     if (!res.ok) {
+        const errMsg = JSON.parse(await res.text())
         throw {
-            status: res.status
+            status: res.status,
+            message: errMsg.message
         }
     }
     const data = await res.json()
@@ -211,8 +221,10 @@ export async function updatePizza(id, name, toppings) {
     }
 
     if (!res.ok) {
+        const errMsg = JSON.parse(await res.text())
         throw {
-            status: res.status
+            status: res.status,
+            message: errMsg.message
         }
     }
     const data = await res.json()

@@ -17,7 +17,7 @@ export async function action({request}) {
         const result = await addPizza(name, toppings)
         return result
     } catch (err) {
-        return new Response(JSON.stringify({error: err.status}), {
+        return new Response(JSON.stringify({error: err.message}), {
             headers: { 'Content-Type': 'application/json'}
         })
     }
@@ -30,13 +30,7 @@ function PizzaAdd() {
 
     let resultMsg
     if (actionData?.error) {
-        if (actionData.error === 400) {
-            resultMsg = 'Pizza name is required.'
-        } else if (actionData.error === 409) {
-            resultMsg = 'Pizza with that name already exists.'
-        } else if (actionData.error === 500) {
-            resultMsg = 'Cannot connect to server. Please try again in a few minutes.'
-        }
+        resultMsg = actionData.error
     } else if (actionData) {
         resultMsg = 'Successfully added new pizza.'
     }
