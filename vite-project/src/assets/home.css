@@ -1,0 +1,35 @@
+.home-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    padding: 10px;
+}
+
+.home-page > h1 {
+    margin: 0;
+    padding-top: 20px;
+}
+
+.home-page > h2 {
+}
+
+.home-link {
+    color: black;
+    padding: 2px 2px;
+}
+
+.home-link:hover {
+    color: black;
+    background-color: yellowgreen;
+}
+
+@media only screen and (max-width: 865px) {
+    .home-page > h1 {
+        font-size: 28px;
+    }
+
+    .home-page > h2 {
+        font-size: 18px;
+    }
+}
